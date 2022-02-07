@@ -20,16 +20,18 @@ class ViewController: UIViewController {
     @IBAction func keyPressed(_ sender: UIButton) {
         playSound(soundName: sender.currentTitle!)
         
+        let dur : TimeInterval = 0.2
+        
         // smoother transition
         //Reduces the sender's (the button that got pressed) opacity to half in a smooth way
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: dur) {
             sender.alpha = 0.5
         }
         
         //Code should execute after 0.3 second delay.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3 ) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + dur ) {
             //Bring's sender's opacity back up to fully opaque in a smooth transition.
-            UIView.animate(withDuration: 0.3) {
+            UIView.animate(withDuration: dur) {
                 sender.alpha = 1.0
             }
         }
